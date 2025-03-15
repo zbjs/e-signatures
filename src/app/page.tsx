@@ -43,14 +43,14 @@ const fontOptions: FontOption[] = [
 <title>নাম স্টাইল জেনারেটর | Bangla Name Style Generator</title>
 <meta name="description" content="আপনার নামের জন্য আকর্ষণীয় ফন্ট এবং স্টাইল তৈরি করুন। সুন্দর বাংলা ফন্ট এবং অন্যান্য কাস্টম স্টাইল দিয়ে নিজের নাম সাজান।" />
 <meta name="keywords" content="Bangla font, name style, font generator, নাম স্টাইল, বাংলা ফন্ট, stylish name" />
-<meta name="author" content="Your Name" />
+<meta name="author" content="Zobaidul Kazi" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta charSet="UTF-8" />
 
 {/* Open Graph (OG) Tags for Social Media Sharing */}
 <meta property="og:title" content="নাম স্টাইল জেনারেটর - Bangla Name Style Generator" />
 <meta property="og:description" content="বাংলা এবং অন্যান্য আকর্ষণীয় ফন্ট দিয়ে আপনার নাম কাস্টমাইজ করুন।" />
-<meta property="og:image" content="/images/preview.png" />
+<meta property="og:image" content="/public/android-chrome-192x192.png" />
 <meta property="og:url" content="https://yourwebsite.com/" />
 <meta property="og:type" content="website" />
 
@@ -58,7 +58,7 @@ const fontOptions: FontOption[] = [
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="নাম স্টাইল জেনারেটর | Bangla Name Style Generator" />
 <meta name="twitter:description" content="আপনার নামকে স্টাইলিশ ও ইউনিক করে তুলুন বাংলা ফন্ট সহ।" />
-<meta name="twitter:image" content="/images/preview.png" />
+<meta name="twitter:image" content="/android-chrome-192x192.png" />
 
 {/* Canonical URL */}
 <link rel="canonical" href="https://yourwebsite.com/" />
