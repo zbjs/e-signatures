@@ -16,8 +16,8 @@ const FontPreview: React.FC<FontPreviewProps> = ({
 }) => {
   return (
     <div className="mt-5">
-      <h2 className="fw-bold mb-3">সমস্ত ফন্টে প্রিভিউ:</h2>
-      <p className="text-muted mb-3">স্টাইলের উপর ক্লিক করুন সিলেক্ট করার জন্য</p>
+      <h2 className="fw-bold mb-3 atma-semibold">সমস্ত ফন্টে প্রিভিউ:</h2>
+      <p className="text-muted mb-3 atma-light">স্টাইলের উপর ক্লিক করুন সিলেক্ট করার জন্য</p>
       
       <div className="row row-cols-1 g-3">
         {fontOptions.map((font) => (
@@ -43,7 +43,7 @@ const FontPreview: React.FC<FontPreviewProps> = ({
                 className="fs-3 mb-0" 
                 style={{ fontFamily: font.value }}
               >
-                {name || 'আপনার নাম এখানে দেখা যাবে'}
+                {name}
               </p>
             </div>
           </div>

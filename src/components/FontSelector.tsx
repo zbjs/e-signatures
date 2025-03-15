@@ -24,7 +24,7 @@ const FontSelector: React.FC<FontSelectorProps> = ({
   
   return (
     <div className="mb-4">
-      <label className="form-label fw-bold">
+      <label className="form-label fw-bold atma-semibold">
         ফন্ট নির্বাচন করুন
       </label>
       

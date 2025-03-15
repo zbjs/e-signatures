@@ -12,37 +12,11 @@ const ImageGenerator: React.FC<ImageGeneratorProps> = ({ text, fontFamily }) => 
   const [padding, setPadding] = useState(40);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const previewRef = useRef<HTMLDivElement>(null);
-  const [fontLoaded, setFontLoaded] = useState(false);
 
-  // Check if the selected font is loaded before rendering to canvas
+  // Update canvas when any parameters change
   useEffect(() => {
-    if (document.fonts) {
-      const checkFont = async () => {
-        try {
-          // Extract the actual font name from the fontFamily value
-          const fontName = fontFamily.split(',')[0].trim().replace(/"/g, '');
-          await document.fonts.load(`16px ${fontName}`);
-          setFontLoaded(true);
-        } catch (err) {
-          console.error("Error loading font:", err);
-          // Proceed anyway after a delay
-          setTimeout(() => setFontLoaded(true), 500);
-        }
-      };
-      
-      checkFont();
-    } else {
-      // Fallback for browsers without document.fonts API
-      setFontLoaded(true);
-    }
-  }, [fontFamily]);
-
-  // Update canvas when any parameters change and font is loaded
-  useEffect(() => {
-    if (fontLoaded) {
-      renderToCanvas();
-    }
-  }, [text, fontFamily, backgroundColor, textColor, fontSize, padding, fontLoaded]);
+    renderToCanvas();
+  }, [text, fontFamily, backgroundColor, textColor, fontSize, padding]);
 
   // Function to render text to canvas
   const renderToCanvas = () => {
@@ -52,6 +26,10 @@ const ImageGenerator: React.FC<ImageGeneratorProps> = ({ text, fontFamily }) => 
     const displayText = text || 'আপনার নাম এখানে দেখা যাবে';
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+
+    // Get dimensions from the preview div
+    const previewDiv = previewRef.current;
+    if (!previewDiv) return;
 
     // Set canvas dimensions
     const width = 800;
@@ -69,9 +47,6 @@ const ImageGenerator: React.FC<ImageGeneratorProps> = ({ text, fontFamily }) => 
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
 
-    // Enable font smoothing
-    ctx.imageSmoothingEnabled = true;
-    
     // Draw text in the center of canvas
     ctx.fillText(displayText, width / 2, height / 2);
   };
@@ -101,12 +76,12 @@ const ImageGenerator: React.FC<ImageGeneratorProps> = ({ text, fontFamily }) => 
   };
 
   return (
-    <div className="mt-4">
-      <h3 className="fw-bold mb-3">ইমেজ জেনারেটর</h3>
+    <div className="mt-4 p-3 border rounded">
+      <h3 className="fw-bold mb-3 atma-semibold">ইমেজ জেনারেটর</h3>
       
       <div className="row g-3 mb-3">
         <div className="col-md-6">
-          <label className="form-label">ব্যাকগ্রাউন্ড কালার</label>
+          <label className="form-label atma-semibold">ব্যাকগ্রাউন্ড কালার</label>
           <input 
             type="color" 
             className="form-control form-control-color w-100" 
@@ -116,7 +91,7 @@ const ImageGenerator: React.FC<ImageGeneratorProps> = ({ text, fontFamily }) => 
         </div>
         
         <div className="col-md-6">
-          <label className="form-label">টেক্সট কালার</label>
+          <label className="form-label atma-semibold">টেক্সট কালার</label>
           <input 
             type="color" 
             className="form-control form-control-color w-100" 
@@ -126,7 +101,7 @@ const ImageGenerator: React.FC<ImageGeneratorProps> = ({ text, fontFamily }) => 
         </div>
         
         <div className="col-md-6">
-          <label className="form-label">ফন্ট সাইজ: {fontSize}px</label>
+          <label className="form-label atma-medium">ফন্ট সাইজ</label>
           <input
             type="range"
             className="form-range"
@@ -135,10 +110,11 @@ const ImageGenerator: React.FC<ImageGeneratorProps> = ({ text, fontFamily }) => 
             value={fontSize}
             onChange={(e) => setFontSize(parseInt(e.target.value))}
           />
+          <div className="text-center">{fontSize}px</div>
         </div>
         
         <div className="col-md-6">
-          <label className="form-label">প্যাডিং: {padding}px</label>
+          <label className="form-label atma-medium">প্যাডিং</label>
           <input
             type="range"
             className="form-range"
@@ -147,6 +123,7 @@ const ImageGenerator: React.FC<ImageGeneratorProps> = ({ text, fontFamily }) => 
             value={padding}
             onChange={(e) => setPadding(parseInt(e.target.value))}
           />
+          <div className="text-center">{padding}px</div>
         </div>
       </div>
       
@@ -178,8 +155,9 @@ const ImageGenerator: React.FC<ImageGeneratorProps> = ({ text, fontFamily }) => 
       <button 
         className="btn btn-primary w-100"
         onClick={saveImage}
+        disabled={!text}
       >
-        <i className="bi bi-download me-2"></i>
+        <i className="bi bi-download me-2 atma-semibold"></i>
         পিএনজি ইমেজ সেভ করুন
       </button>
     </div>

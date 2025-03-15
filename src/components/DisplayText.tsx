@@ -9,7 +9,7 @@ interface DisplayTextProps {
 const DisplayText: React.FC<DisplayTextProps> = ({ text, fontFamily }) => {
   return (
     <div className="mt-4 p-4 border rounded shadow bg-light">
-      <h2 className="fw-bold mb-3">আপনার নামের প্রিভিউ:</h2>
+      <h2 className="font- mb-3 atma-semibold">আপনার নামের প্রিভিউ:</h2>
       <div 
         className="fs-1 text-center p-4" 
         style={{ 
@@ -20,7 +20,7 @@ const DisplayText: React.FC<DisplayTextProps> = ({ text, fontFamily }) => {
           justifyContent: 'center'
         }}
       >
-        {text || 'আপনার নাম এখানে দেখা যাবে'}
+        {text}
       </div>
     </div>
   );

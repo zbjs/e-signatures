@@ -9,9 +9,10 @@ interface NameInputProps {
 const NameInput: React.FC<NameInputProps> = ({ name, setName }) => {
   return (
     <div className="mb-3">
-      <label htmlFor="name" className="form-label fw-bold">
-        আপনার নাম লিখুন
-      </label>
+ <label htmlFor="name" className="form-label fw-bold atma-medium">
+  আপনার নাম লিখুন
+</label>
+
       <input
         type="text"
         id="name"

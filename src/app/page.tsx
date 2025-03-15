@@ -5,18 +5,11 @@ import FontSelector, { FontOption } from '../components/FontSelector';
 import DisplayText from '../components/DisplayText';
 import FontPreview from '../components/FontPreview';
 import ImageGenerator from '../components/ImageGenerator';
-import CustomStyle from '../components/CustomStyle';
-
-// Custom Bangla font
-const customFonts = [
-  { name: 'HasanPro', url: '/fonts/Li Hasan Protilipi ANSI V1.ttf' }
-];
+import Head from 'next/head';
 
 // Combine custom fonts with Google fonts
 const fontOptions: FontOption[] = [
-  // Add custom Bangla font at the top of the list
-  { name: 'হাসান প্রো', value: '"HasanPro", sans-serif' },
-  
+ 
   // Google fonts
   { name: 'Alex Brush', value: '"Alex Brush", cursive' },
   { name: 'Allura', value: '"Allura", cursive' },
@@ -42,7 +35,37 @@ const fontOptions: FontOption[] = [
   { name: 'Shadows Into Light', value: '"Shadows Into Light", cursive' },
   { name: 'Tangerine', value: '"Tangerine", cursive' },
   { name: 'Zeyada', value: '"Zeyada", cursive' },
+  
 ];
+
+<Head>
+{/* Basic SEO Tags */}
+<title>নাম স্টাইল জেনারেটর | Bangla Name Style Generator</title>
+<meta name="description" content="আপনার নামের জন্য আকর্ষণীয় ফন্ট এবং স্টাইল তৈরি করুন। সুন্দর বাংলা ফন্ট এবং অন্যান্য কাস্টম স্টাইল দিয়ে নিজের নাম সাজান।" />
+<meta name="keywords" content="Bangla font, name style, font generator, নাম স্টাইল, বাংলা ফন্ট, stylish name" />
+<meta name="author" content="Your Name" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charSet="UTF-8" />
+
+{/* Open Graph (OG) Tags for Social Media Sharing */}
+<meta property="og:title" content="নাম স্টাইল জেনারেটর - Bangla Name Style Generator" />
+<meta property="og:description" content="বাংলা এবং অন্যান্য আকর্ষণীয় ফন্ট দিয়ে আপনার নাম কাস্টমাইজ করুন।" />
+<meta property="og:image" content="/images/preview.png" />
+<meta property="og:url" content="https://yourwebsite.com/" />
+<meta property="og:type" content="website" />
+
+{/* Twitter Card for Better Sharing on Twitter */}
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="নাম স্টাইল জেনারেটর | Bangla Name Style Generator" />
+<meta name="twitter:description" content="আপনার নামকে স্টাইলিশ ও ইউনিক করে তুলুন বাংলা ফন্ট সহ।" />
+<meta name="twitter:image" content="/images/preview.png" />
+
+{/* Canonical URL */}
+<link rel="canonical" href="https://yourwebsite.com/" />
+
+{/* Favicon */}
+<link rel="icon" href="/favicon.ico" />
+</Head>
 
 export default function Home() {
   const [name, setName] = useState<string>('');
@@ -76,17 +99,17 @@ export default function Home() {
 
   return (
     <>
-      <CustomStyle customFonts={customFonts} />
+    
       <main className="py-4 bg-light min-vh-100">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-md-10 col-lg-8">
-              <h1 className="text-center mb-4 fw-bold">
+              <h1 className="text-center mb-4 fw-bold atma-semibold">
                 নাম স্টাইল জেনারেটর
               </h1>
               
               {!fontsLoaded && (
-                <div className="alert alert-info text-center">
+                <div className="alert alert-info text-center atma-semibold">
                   ফন্ট লোড হচ্ছে, অনুগ্রহ করে অপেক্ষা করুন...
                 </div>
               )}
