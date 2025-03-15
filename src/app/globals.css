@@ -1,0 +1,7 @@
+/* src/app/globals.css */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+body {
+  padding: 20px;
+  font-family: 'HasanPro';
+}
